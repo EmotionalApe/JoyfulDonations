@@ -110,7 +110,6 @@ function Gallery(){
             <img id="projmainimage" src={gallimg} alt="Project Img"/>
             </div>
             <div className="headtxt">
-            
             <h1>
                 Initiatives
             </h1>
