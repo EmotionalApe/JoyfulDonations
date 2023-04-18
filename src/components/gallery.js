@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 //import './Gallery.css';
-import CloseIcon from '@material-ui/icons/Close';
+import {FiX} from 'react-icons/fi';
 import {Link} from "react-router-dom";
 
 import image1 from '../components/galleryImages/image1.jpg';
@@ -123,7 +123,7 @@ function Gallery(){
 
         <div className={model? "model open" : "model"}>
             <img src={tempimgSrc} alt=""/>
-            <CloseIcon onClick={()=>setModel(false)}/>
+            <FiX onClick={()=>setModel(false)}/> 
         </div>
 
         <div>
