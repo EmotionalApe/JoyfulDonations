@@ -1,48 +1,28 @@
-// import React, { useState } from 'react'
 
-// export default function AdminPage() {
-//     const list = [
-//         {
-//             id : 1,
-//             req : "request 1"
-//         }, 
-//         {
-//             id : 2,
-//             req : "request 2"
-//         }, 
-//         {
-//             id : 3,
-//             req : "request 3"
-//         }
-//     ]
-//     const [lists, setlist] = useState(list)
-//     return (
-//     <div>
-//         <table style={{color:"red"}}>
-//             {
-//                 lists.map((current) =>{
-//                     <tr>
-//                         <td>{current.req}</td>
-//                     </tr>
-//                 })
-//             }
-//         </table>
-//     </div>  
-//   )
-// }
+import React, { useRef, useState, useEffect} from 'react'
+import {getFirestore,doc, getDocs, collection} from "firebase/firestore"
+import {app} from "../firebase"
 
-
-
-// // <textarea id="w3review" name="w3review" rows="4" cols="50"style={{paddingLeft:"20px"}}>
-// //     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero soluta odio minus atque dolorum adipisci voluptates quae sapiente eos fuga.
-// //     </textarea>
-// //     <br />
-// //     <button style={{paddingLeft:"70px", color:"red"}}>Accept</button>
-// //     <button style={{paddingLeft: "70px",  color:"red"}}>Decline</button>
-import React, { useRef, useState } from 'react'
 import './AdminPage.css'
 
+const firestore = getFirestore(app)
+
 function AdminPage() {
+    // let docsSnap = null
+
+    const getDocument = async()=> {
+        const reqRef=collection(firestore,"DonationReqs")
+        var docsSnap = await getDocs(reqRef);
+        docsSnap.forEach(data => console.log(data.data()))
+    }
+
+    useEffect(()=>{
+        getDocument()
+        
+    },[])
+
+    
+
     const list = [
         {
             id: 1, 
